@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TestWise AI | Intelligent Software Testing</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><div class="brand-icon">✓</div><div><b>TestWise AI</b><small>QUALITY ENGINEERING</small></div></div>
+  <p class="nav-label">WORKSPACE</p>
+  <button class="nav active" data-view="overview">▦ <span>Overview</span></button>
+  <button class="nav" data-view="tests">☑ <span>Test cases</span></button>
+  <button class="nav" data-view="bugs">⚑ <span>Bug reports</span></button>
+  <button class="nav" data-view="assistant">✧ <span>AI assistant</span></button>
+  <div class="sidebar-bottom"><div class="status-dot"></div><span>Local workspace</span><small>v0.1 starter</small></div>
+</aside>
+<main class="main">
+  <header class="topbar"><div><p class="eyebrow">QUALITY ENGINEERING / WORKSPACE</p><h1 id="page-title">Overview</h1></div><div class="user-chip"><span class="avatar">T</span><span><b>Tester</b><small>Project workspace</small></span></div></header>
+  <section id="view-overview" class="view">
+    <div class="welcome"><div><p class="eyebrow light">TESTWISE AI WORKSPACE</p><h2>Ship better software.<br><span>Catch issues earlier.</span></h2><p>Track test execution, organize defects, and use AI-assisted QA workflows.</p><button class="primary" data-go="assistant">✧ Generate test cases</button></div><div class="welcome-art"><div class="orb">✓</div><div class="floating f1">AI-assisted QA</div><div class="floating f2">Test insights</div><div class="floating f3">Bug tracking</div></div></div>
+    <div class="stats">
+      <article class="stat"><div class="stat-head"><span>Total test cases</span><span class="stat-icon blue">☑</span></div><strong id="totalTests">0</strong><small>Tracked in workspace</small></article>
+      <article class="stat"><div class="stat-head"><span>Passed</span><span class="stat-icon green">✓</span></div><strong id="passedTests">0</strong><small>Successful executions</small></article>
+      <article class="stat"><div class="stat-head"><span>Failed</span><span class="stat-icon red">×</span></div><strong id="failedTests">0</strong><small>Need investigation</small></article>
+      <article class="stat"><div class="stat-head"><span>Open bugs</span><span class="stat-icon amber">⚑</span></div><strong id="openBugs">0</strong><small>Open or in progress</small></article>
+    </div>
+    <div class="two-col"><section class="panel"><div class="panel-head"><div><h3>Recent test cases</h3><p>Your latest testing activity</p></div><button class="text-btn" data-go="tests">View all →</button></div><div id="recent-tests" class="empty">No test cases yet. Add one to get started.</div></section>
+    <section class="panel"><div class="panel-head"><div><h3>Quick actions</h3><p>Common QA tasks</p></div></div><button class="action-card" data-go="tests"><span class="action-icon blue">＋</span><span><b>Create a test case</b><small>Record steps and expected results</small></span><span class="chevron">→</span></button><button class="action-card" data-go="bugs"><span class="action-icon red">⚑</span><span><b>Report a bug</b><small>Document an unexpected result</small></span><span class="chevron">→</span></button><button class="action-card" data-go="assistant"><span class="action-icon purple">✧</span><span><b>Ask AI assistant</b><small>Draft test scenarios or analyze a bug</small></span><span class="chevron">→</span></button></section></div>
+  </section>
+  <section id="view-tests" class="view hidden">
+    <div class="section-intro"><div><h2>Test cases</h2><p>Create and track manual test cases and their execution status.</p></div><button id="show-test-form" class="primary">＋ New test case</button></div>
+    <form id="test-form" class="panel form-grid hidden"><label>Test case title<input name="title" required placeholder="e.g. Login with valid credentials"></label><label>Priority<select name="priority"><option>MEDIUM</option><option>HIGH</option><option>LOW</option><option>CRITICAL</option></select></label><label class="full">Steps to execute<textarea name="steps" required placeholder="1. Open login page&#10;2. Enter valid credentials&#10;3. Click Login"></textarea></label><label class="full">Expected result<textarea name="expectedResult" placeholder="User is redirected to the dashboard"></textarea></label><div class="full form-actions"><button type="button" class="secondary" data-cancel="test-form">Cancel</button><button class="primary">Save test case</button></div></form>
+    <section class="panel"><div class="panel-head"><div><h3>All test cases</h3><p>Update each test after execution.</p></div><span class="count" id="test-count">0 items</span></div><div id="tests-list" class="table-wrap"></div></section>
+  </section>
+  <section id="view-bugs" class="view hidden">
+    <div class="section-intro"><div><h2>Bug reports</h2><p>Capture defects, track their status, and request AI analysis.</p></div><button id="show-bug-form" class="primary">＋ Report a bug</button></div>
+    <form id="bug-form" class="panel form-grid hidden"><label>Bug title<input name="title" required placeholder="e.g. Login button does not respond"></label><label>Severity<select name="severity"><option>MEDIUM</option><option>LOW</option><option>HIGH</option><option>CRITICAL</option></select></label><label class="full">Description<textarea name="description" required placeholder="Describe what happened"></textarea></label><label>Steps to reproduce<textarea name="stepsToReproduce" placeholder="1. Open the page..."></textarea></label><label>Expected result<textarea name="expectedResult" placeholder="What should happen?"></textarea></label><label class="full">Actual result<textarea name="actualResult" placeholder="What actually happened?"></textarea></label><div class="full form-actions"><button type="button" class="secondary" data-cancel="bug-form">Cancel</button><button class="primary">Save bug report</button></div></form>
+    <section class="panel"><div class="panel-head"><div><h3>All bug reports</h3><p>Keep issue status up to date.</p></div><span class="count" id="bug-count">0 items</span></div><div id="bugs-list" class="table-wrap"></div></section>
+  </section>
+  <section id="view-assistant" class="view hidden">
+    <div class="section-intro"><div><h2>AI assistant</h2><p>Draft test scenarios from requirements or analyze a reported defect.</p></div><span class="ai-pill">✧ AI-ASSISTED</span></div>
+    <div class="ai-grid"><section class="panel"><div class="ai-heading"><span class="ai-big">✧</span><div><h3>Generate test cases</h3><p>Turn a requirement into a starter set of test ideas.</p></div></div><form id="ai-test-form"><label>Software requirement<textarea name="requirement" required placeholder="Example: A user can reset their password using a verified email address."></textarea></label><button class="primary">Generate scenarios →</button></form><div id="ai-test-result" class="ai-result hidden"></div></section>
+    <section class="panel"><div class="ai-heading"><span class="ai-big coral">⚑</span><div><h3>Analyze a bug</h3><p>Get possible causes and recommended follow-up checks.</p></div></div><form id="ai-bug-form"><label>Bug title<input name="title" required placeholder="Short summary"></label><label>Description<textarea name="description" required placeholder="What is going wrong?"></textarea></label><label>Expected result<input name="expectedResult" placeholder="What should happen?"></label><label>Actual result<input name="actualResult" placeholder="What happened instead?"></label><button class="primary">Analyze bug →</button></form><div id="ai-bug-result" class="ai-result hidden"></div></section></div>
+    <p class="notice">AI output is advisory. Review generated cases before use; suggested root causes are hypotheses, not confirmed findings. Without AI API configuration, the app uses a clearly labeled local rule-based fallback.</p>
+  </section>
+  <div id="toast" role="status" class="toast hidden"></div>
+  <footer>TestWise AI · Academic project starter · Review and test before production use</footer>
+</main>
+<script src="/app.js"></script>
+</body></html>
